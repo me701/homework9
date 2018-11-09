@@ -71,6 +71,13 @@ With these set, you should be able to execute the following in your
 make problem1
 ```
 
+Currently, the template looks for a command-line argument of the form `-n 10`,
+which would indicate `n=10` cells.
+
+You should wrap up your solution by writing a file with two columns of 
+data separate by a space. Each row should be of the form `0.0 100.0`, where
+the first value is the `x` value, and the second value is the temperature at 
+that point (0 and 100 are probably not right).
 
 ## Problem 2 - 2 points
 

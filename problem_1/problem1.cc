@@ -11,30 +11,34 @@ int main(int argc,char **args)
   SNES snes;
   KSP ksp;
   PC pc;
-  Vec z, r;
+  Vec T, r;
   Mat J, J_mf;
   int ierr;
 
   // Initialize PETSc.
   ierr = PetscInitialize(&argc, &args, NULL, NULL);
+
+  // Get "n" from the command line.
+  int n = 10; // this is the default value!
+  ierr = PetscOptionsGetInt(NULL,NULL,"-n", &n, NULL);
   
   // Set up the nonlinear solver.
   ierr = SNESCreate(PETSC_COMM_SELF, &snes);
 
   // Create the vectors for the solution and residual, i.e.,
-  // z and r=f(z), respectively.
-  ierr = VecCreateSeq(PETSC_COMM_SELF, 2, &z);
-  ierr = VecDuplicate(z, &r);
+  // T and r=f(T), respectively.
+  ierr = VecCreateSeq(PETSC_COMM_SELF, n, &T);
+  ierr = VecDuplicate(T, &r);
 
   // Provide an initial guess.
-  double *z_a;
-  ierr = VecGetArray(z, &z_a);
+  double *T_a;
+  ierr = VecGetArray(T, &T_a);
   // ...
-  ierr = VecRestoreArray(z, &z_a);
+  ierr = VecRestoreArray(T, &T_a);
 
   // Set the residual function.
   ierr = SNESSetFunction(snes, r, residual, NULL);
-
+  residual(snes, T, r, NULL);
 
   ierr = MatCreateSNESMF(snes, &J_mf);
   ierr = SNESSetJacobian(snes, J_mf, J, SNESComputeJacobianDefault, NULL);
@@ -43,12 +47,16 @@ int main(int argc,char **args)
   ierr = SNESSetFromOptions(snes);
 
   // Time to solve
-  ierr = SNESSolve(snes, NULL, z);
+  ierr = SNESSolve(snes, NULL, T);
 
-  ierr = VecView(z, PETSC_VIEWER_STDOUT_WORLD);
+  // This prints the temperatures to standard output.
+  ierr = VecView(T, PETSC_VIEWER_STDOUT_WORLD);
   
+  // Here, you should open a file a print x and T.
+  
+
   // Clean-up time!
-  ierr = VecDestroy(&z); CHKERRQ(ierr);
+  ierr = VecDestroy(&T); CHKERRQ(ierr);
   ierr = VecDestroy(&r); CHKERRQ(ierr); 
   ierr = SNESDestroy(&snes);CHKERRQ(ierr);
   ierr = PetscFinalize();
