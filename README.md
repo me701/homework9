@@ -55,7 +55,14 @@ files.  The primary task is to define the *residual* function $\mathbf{f}(\mathb
 from the original system of equations.  We will discuss this in class.
 
 Note, make sure you have your PETSc libraries in your `LD_LIBRARY_PATH`.  We 
-will go over this in class, too.
+will go over this in class, too.  An easy way to do this is to include something
+following in your `.bashrc`:
+
+```
+export PETSC_DIR=/home/robertsj/opt/petsc/petsc-3.10.2
+export PETSC_ARCH=gcc-shared-release
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PETSC_DIR/$PETSC_ARCH/lib
+```
 
 
 ## Problem 2 - 2 points
