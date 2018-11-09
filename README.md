@@ -46,10 +46,16 @@ For this problem, assume the following:
   - $Q = 3.5\cdot 10^{8}$ [W/m$^3$]
 
 Because $k$ depends on $T(x)$, this problem is a nonlinear boundary-value
-problem.  You will use PETSc to solve it using the Jacobian-free, Newton-Krylov
-method.
+problem.
 
-### Part 1
+
+You will use PETSc to solve it using the Jacobian-free, Newton-Krylov
+method. You are given a Makefile and a number of partially completed
+files.  The primary task is to define the *residual* function $\mathbf{f}(\mathbf{T})$
+from the original system of equations.  We will discuss this in class.
+
+Note, make sure you have your PETSc libraries in your `LD_LIBRARY_PATH`.  We 
+will go over this in class, too.
 
 
 ## Problem 2 - 2 points
