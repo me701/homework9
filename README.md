@@ -5,9 +5,9 @@ in class (1) to solve a relevant engineering problem and (2) to understand
 the basic performance of different implementations of a standard linear
 algebraic operation (in this case, the matrix-vector operation).
 
-## Problem 1 - 5 points
+## Problem 1 - 4 points
 
-Consider the one-dimensional, steady-state, head-conduction equation
+Consider the one-dimensional, steady-state, heat-conduction equation
 in *Cartesian* coordinates:
 
 $$
@@ -62,6 +62,13 @@ following in your `.bashrc`:
 export PETSC_DIR=/home/robertsj/opt/petsc/petsc-3.10.2
 export PETSC_ARCH=gcc-shared-release
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PETSC_DIR/$PETSC_ARCH/lib
+```
+
+With these set, you should be able to execute the following in your
+`/path/to/homework9/problem1` folder:
+
+```
+make problem1
 ```
 
 
