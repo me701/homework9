@@ -38,7 +38,6 @@ int main(int argc,char **args)
 
   // Set the residual function.
   ierr = SNESSetFunction(snes, r, residual, NULL);
-  residual(snes, T, r, NULL);
 
   ierr = MatCreateSNESMF(snes, &J_mf);
   ierr = SNESSetJacobian(snes, J_mf, J, SNESComputeJacobianDefault, NULL);
