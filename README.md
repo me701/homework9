@@ -23,7 +23,7 @@ $$
 and the 
 
 $$
-  -k(1, T(L)) \frac{dT}{dx} \Bigg|_{x=L} = h[T_{\infty} - T(L)] \, .
+  k(1, T(L)) \frac{dT}{dx} \Bigg|_{x=L} = h[T_{\infty} - T(L)] \, .
 $$
 
 Here, $T$ is temperature (in [K]), $x$ is a spatial coordinate, 
