@@ -44,6 +44,7 @@ For this problem, assume the following:
   - $h = 30000$ [W/m$^2$-K]
   - $k(x, T(x)) =  (0.1148+2.475\cdot 10^{-4} T(x))^{-1} + 0.0132 e^{0.00188 T(x)}$
   - $Q = 3.5\cdot 10^{8}$ [W/m$^3$]
+  - $T_{\infty} = 580$.
 
 Because $k$ depends on $T(x)$, this problem is a nonlinear boundary-value
 problem.
